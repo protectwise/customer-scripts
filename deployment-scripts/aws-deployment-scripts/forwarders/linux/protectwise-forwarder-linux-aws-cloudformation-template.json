@@ -1,22 +1,25 @@
-"Resources" : { 
-  "<<resourceName>>": {
-    "Type" : "AWS::EC2::Instance",
-    "Properties": {
-      "Tags"             : [ { "Key" : "Name", "Value" : "<<nameValue>>" } ], 
-      "ImageId"          : "<<imageId>>",
-      "InstanceType"     : "<<instanceType>>",
-      "SubnetId"         : "<<subnetId>>",
-      "SecurityGroupIds" : [ "<<securityGroupId>>" ],
-      "KeyName"          : "<<keyName>>",
-      "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
-            "#!/bin/bash\n",
-            "captureInterfaceMac=($(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/))\n",
-            "SUBNET_ID=$(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/${captureInterfaceMac[0]}subnet-id)\n",
-            "echo '{ \"sensor\": \"sensor-'${SUBNET_ID}'\", \"filter\": \"not host 169.254.169.254\" }' > /etc/protectwise/forwarder.json\n",
-            "if which status; then start protectwise-forwarder\n",
-            "elif which systemctl; then systemctl start protectwise-forwarder\n",
-            "else service protectwise-forwarder start; fi\n"
-      ]]}}
-    }
-  } 
+{
+  "Description" : "ProtectWise Linux Forwarder Configuration Version 1.3. This template creates a linux instance with a UserData script that configures the forwarder to point to the sensor responsible for capturing traffic for the local subnet.  Replace double-angle-bracketed text. (i.e. <<replaceMe>>)",  
+  "Resources" : { 
+    "<<resourceName>>": {
+      "Type" : "AWS::EC2::Instance",
+      "Properties": {
+        "Tags"             : [ { "Key" : "Name", "Value" : "<<nameValue>>" } ], 
+        "ImageId"          : "<<imageId>>",
+        "InstanceType"     : "<<instanceType>>",
+        "SubnetId"         : "<<subnetId>>",
+        "SecurityGroupIds" : [ "<<securityGroupId>>" ],
+        "KeyName"          : "<<keyName>>",
+        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+              "#!/bin/bash\n",
+              "captureInterfaceMac=($(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/))\n",
+              "SUBNET_ID=$(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/${captureInterfaceMac[0]}subnet-id)\n",
+              "echo '{ \"sensor\": \"sensor-'${SUBNET_ID}'\", \"filter\": \"not host 169.254.169.254\" }' > /etc/protectwise/forwarder.json\n",
+              "if which status; then start protectwise-forwarder\n",
+              "elif which systemctl; then systemctl start protectwise-forwarder\n",
+              "else service protectwise-forwarder start; fi\n"
+        ]]}}
+      }
+    } 
+  }
 }

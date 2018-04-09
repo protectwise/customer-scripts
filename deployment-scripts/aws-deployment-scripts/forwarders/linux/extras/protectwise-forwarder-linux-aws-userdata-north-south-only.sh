@@ -1,5 +1,6 @@
 #!/bin/bash
 # ProtectWise Forwarding Agent Autoconfigurator Script for AWS
+# Version 1.2
 
 # Learn my subnet information
 captureInterfaceMac=($(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/))

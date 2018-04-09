@@ -1,21 +1,24 @@
-"Resources" : { 
-  "<<resourceName>>": {
-    "Type" : "AWS::EC2::Instance",
-    "Properties": {
-      "Tags"             : [ { "Key" : "Name", "Value" : "<<nameValue>>" } ], 
-      "ImageId"          : "<<imageId>>",
-      "InstanceType"     : "<<instanceType>>",
-      "SubnetId"         : "<<subnetId>>",
-      "SecurityGroupIds" : [ "<<securityGroupId>>" ],
-      "KeyName"          : "<<keyName>>",
-      "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
-            "<powershell>\n",
-            "$captureInterfaceMac = Invoke-RestMethod http://169.254.169.254/latest/meta-data/network/interfaces/macs/\n",
-            "$SUBNET_ID = Invoke-RestMethod http://169.254.169.254/latest/meta-data/network/interfaces/macs/${captureInterfaceMac}subnet-id\n",
-            "echo \"{ `\"sensor`\": `\"sensor-$SUBNET_ID`\", `\"filter`\": `\"not host 169.254.169.254`\" }\" | Out-File -FilePath \"$env:ProgramFiles\\ProtectWise Windows Forwarding Agent\\config.json\" -Encoding utf8\n",
-            "Start-Service protectwise-forwarder\n",
-            "</powershell>\n"
-      ]]}}
-    }
-  } 
+{
+  "Description" : "ProtectWise Windows Forwarder Configuration Version 1.3. This template creates a Windows instance with a UserData script that configures the forwarder to point to the sensor responsible for capturing traffic for the local subnet.  Replace double-angle-bracketed text. (i.e. <<replaceMe>>)",
+  "Resources" : { 
+    "<<resourceName>>": {
+      "Type" : "AWS::EC2::Instance",
+      "Properties": {
+        "Tags"             : [ { "Key" : "Name", "Value" : "<<nameValue>>" } ], 
+        "ImageId"          : "<<imageId>>",
+        "InstanceType"     : "<<instanceType>>",
+        "SubnetId"         : "<<subnetId>>",
+        "SecurityGroupIds" : [ "<<securityGroupId>>" ],
+        "KeyName"          : "<<keyName>>",
+        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+              "<powershell>\n",
+              "$captureInterfaceMac = Invoke-RestMethod http://169.254.169.254/latest/meta-data/network/interfaces/macs/\n",
+              "$SUBNET_ID = Invoke-RestMethod http://169.254.169.254/latest/meta-data/network/interfaces/macs/${captureInterfaceMac}subnet-id\n",
+              "echo \"{ `\"sensor`\": `\"sensor-$SUBNET_ID`\", `\"filter`\": `\"not host 169.254.169.254`\" }\" | Out-File -FilePath \"$env:ProgramFiles\\ProtectWise Windows Forwarding Agent\\config.json\" -Encoding utf8\n",
+              "Start-Service protectwise-forwarder\n",
+              "</powershell>\n"
+        ]]}}
+      }
+    } 
+  }
 }

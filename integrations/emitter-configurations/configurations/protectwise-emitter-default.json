@@ -1,4 +1,6 @@
 {
+    "_version": "1.0",
+    "_description": "Default ProtectWise Emitter configuration.",
     "certFile":"/etc/protectwise/protectwise-emitter/cert.crt",
     "keyFile":"/etc/protectwise/protectwise-emitter/private.pem",
     "trustChainFile":"/etc/protectwise/protectwise-emitter/trust-chain.crt",

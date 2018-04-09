@@ -1,4 +1,6 @@
 {
+  "_version": "1.0",
+  "_description": "ProtectWise Emitter configuration to export CEF format to a file output.",
   "apiUrl": "wss://notifications.protectwise.com",
   "certFile":"/etc/protectwise/protectwise-emitter/cert.crt",
   "keyFile":"/etc/protectwise/protectwise-emitter/private.pem",
