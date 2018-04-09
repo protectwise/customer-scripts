@@ -10,7 +10,6 @@
         "SecurityGroups"     : [ "<<security-group-ids>>" ]
       }
     },
-    
     "SensorHAAutoScalingGroup": {
       "Type" : "AWS::AutoScaling::AutoScalingGroup",
       "Properties" : {
