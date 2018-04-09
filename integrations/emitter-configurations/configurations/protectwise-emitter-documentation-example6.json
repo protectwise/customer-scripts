@@ -1,0 +1,26 @@
+{
+    "_version": "1.0",
+    "_description": "ProtectWise Emitter Documentation Example 6",
+    "tcpAdapters": [
+        {
+            "delim": "\n",
+            "host": "10.12.1.1",
+            "name": "cef",
+            "port": 8513
+        }
+    ],
+    "subscriptions": [
+        {
+            "adapters": [
+                "cef"
+            ],
+            "source": "event",
+            "messageFormat": {
+                "cef": {
+                    "type": "syslog"
+                }
+            },
+            "template": "@file:/etc/protectwise/protectwise-emitter/templates/event_cef"
+        }
+    ]
+}
