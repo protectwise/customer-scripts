@@ -1,0 +1,43 @@
+{
+    "_version": "1.0",
+    "_description": "ProtectWise Emitter Documentation Example 3",
+    "tcpAdapters": [
+        {
+            "delim": "\n",
+            "host": "127.0.0.1",
+            "name": "tcp",
+            "port": 8082
+        }
+    ],
+    "fileAdapters": [
+        {
+            "delim": "\n",
+            "name": "file",
+            "path": "/tmp/syslog.out",
+            "rotation": {
+                "maxAgeDays": 1,
+                "maxSizeMB": 1,
+                "maxBackups": 2
+            }
+        }
+    ],
+    "subscriptions": [
+        {
+            "adapters":[
+                "file"
+            ],
+            "source": "event"
+        },
+        {
+            "adapters" : [
+                "tcp"
+            ],
+            "source": "event",
+            "template": "{{isoStartedAtUTC}} - {{message}}: {{visualizerLink}}",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "_version": "1.0",
+    "_description": "ProtectWise Emitter Documentation Example 5",
+    "tcpAdapters": [
+        {
+            "delim": "\n",
+            "host": "127.0.0.1",
+            "name": "tcp",
+            "port": 8082
+        }
+    ],
+    "subscriptions": [
+        {
+            "adapters": [
+                "tcp"
+            ],
+            "source": "event",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            }
+        }
+    ]
+}
