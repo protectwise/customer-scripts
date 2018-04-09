@@ -1,0 +1,1 @@
+devicePayloadId={{id}} dpt={{dstPort}} dst={{dstIp}} proto={{layer4Proto}} rt={{observedAt}} spt={{srcPort}} src={{srcIp}} start={{occurredAt}} cs1={{killChainStage}} cs1Label=KillChain stage cs2={{observedStage}} cs2Label=observed stage sproc={{sensorName}} request={{url}} cs3={{messageType}} cs3Label=message type

@@ -1,0 +1,107 @@
+{
+    "certFile":"/etc/protectwise/protectwise-emitter/cert.crt",
+    "keyFile":"/etc/protectwise/protectwise-emitter/private.pem",
+    "trustChainFile":"/etc/protectwise/protectwise-emitter/trust-chain.crt",
+    "apiUrl": "wss://notifications.protectwise.com",
+    "visualizerUrl": "https://visualizer.protectwise.com",
+    "logging":{
+       "trace": false
+    },
+    "logRotation": {
+        "maxAgeDays": 1,
+        "maxBackups": 3,
+        "maxSizeMB": 10
+    },
+    "fileAdapters": [
+        {
+            "delim": "\n",
+            "name": "file",
+            "path": "/tmp/syslog.out",
+            "rotation": {
+                "maxAgeDays": 2,
+                "maxBackups": 10,
+                "maxSizeMB": 10
+            }
+        }
+    ],
+    "tcpAdapters": [
+        {
+            "delim": "\n",
+            "host": "127.0.0.1",
+            "name": "tcp",
+            "port": 8082
+        }
+    ],
+    "udpAdapters": [
+        {
+            "host": "127.0.0.1",
+            "name": "udp",
+            "port": 8083
+        }
+    ],
+    "subscriptions": [
+    {
+            "adapters": ["file"],
+            "source": "heuristics",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            },
+            "template": "heuristics observation: observedAt {{isoObservedAt}}.  src - {{srcIp}} dst - {{dstIp}}.  rule: {{rule}}"
+        },
+        {
+            "adapters": ["file"],
+            "source": "payload",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            },
+            "template": "payload observation: observedAt {{isoObservedAt}}.  src - {{srcIp}} dst - {{dstIp}}.  classification: {{classification}}, description: {{description}}, signature id : {{signatureId}}"
+        },
+        {
+            "adapters": ["file"],
+            "source": "certRep",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            },
+            "template": "certRep observation: observedAt {{isoObservedAt}}.  src - {{srcIp}} dst - {{dstIp}}.  signing chain: {{signingChain}}"
+        },
+        {
+            "adapters": ["file"],
+            "source": "dnsRep",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            },
+            "template": "dnsRep observation: observedAt {{isoObservedAt}}.  src - {{srcIp}} dst - {{dstIp}}.  entry : {{dns}}, category : {{dnsRepCategory}}, conversation : {{dnsConversation}}" 
+        },
+        {
+            "adapters": ["file"],
+            "source": "fileRep",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            },
+            "template": "fileRep observation: observedAt {{isoObservedAt}}.  src - {{srcIp}} dst - {{dstIp}}. md5: {{md5}}, sha1: {{sha1}}, sha256: {{sha256}}"
+        },
+        {
+            "adapters": ["file"],
+            "source": "ipRep",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            },
+            "template": "ipRep observation: observedAt {{isoObservedAt}}.  src - {{srcIp}} dst - {{dstIp}}. triggered on ip {{ip}}"
+        },
+        {
+            "adapters": ["file"],
+            "source": "urlRep",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            },
+            "template": "urlRep observation: observed at {{isoObservedAt}}. src - {{srcIp}} dst - {{dstIp}}. {{hostname}}, {{path}}, {{port}}, {{queryString}}"
+        }
+    ]
+}

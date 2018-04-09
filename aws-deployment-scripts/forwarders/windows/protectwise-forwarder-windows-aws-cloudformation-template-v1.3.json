@@ -1,0 +1,21 @@
+"Resources" : { 
+  "<<resourceName>>": {
+    "Type" : "AWS::EC2::Instance",
+    "Properties": {
+      "Tags"             : [ { "Key" : "Name", "Value" : "<<nameValue>>" } ], 
+      "ImageId"          : "<<imageId>>",
+      "InstanceType"     : "<<instanceType>>",
+      "SubnetId"         : "<<subnetId>>",
+      "SecurityGroupIds" : [ "<<securityGroupId>>" ],
+      "KeyName"          : "<<keyName>>",
+      "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+            "<powershell>\n",
+            "$captureInterfaceMac = Invoke-RestMethod http://169.254.169.254/latest/meta-data/network/interfaces/macs/\n",
+            "$SUBNET_ID = Invoke-RestMethod http://169.254.169.254/latest/meta-data/network/interfaces/macs/${captureInterfaceMac}subnet-id\n",
+            "echo \"{ `\"sensor`\": `\"sensor-$SUBNET_ID`\", `\"filter`\": `\"not host 169.254.169.254`\" }\" | Out-File -FilePath \"$env:ProgramFiles\\ProtectWise Windows Forwarding Agent\\config.json\" -Encoding utf8\n",
+            "Start-Service protectwise-forwarder\n",
+            "</powershell>\n"
+      ]]}}
+    }
+  } 
+}

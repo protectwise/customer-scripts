@@ -1,0 +1,152 @@
+{
+  "certFile": "/etc/protectwise/protectwise-emitter/cert.crt",
+  "keyFile": "/etc/protectwise/protectwise-emitter/private.pem",
+  "trustChainFile": "/etc/protectwise/protectwise-emitter/trust-chain.crt",
+  "apiUrl": "wss://notifications.protectwise.com",
+  "visualizerUrl": "https://visualizer.protectwise.com",
+  "logging":{
+    "trace": false
+  },
+  "logRotation": {
+    "maxAgeDays": 1,
+    "maxBackups": 1,
+    "maxSizeMB": 10
+  },
+  "feeds": {
+    "observations": {
+      "consumeAll": true
+    }
+  },
+  "fileAdapters": [
+    {
+      "name": "eventFile",
+      "path": "/tmp/spl/event.out",
+      "rotation": {
+        "maxAgeDays": 1,
+        "maxSizeMB": 10,
+        "maxBackups": 1
+      },
+      "delim": "\n"
+    },
+    {
+      "name": "heuristicsFile",
+      "path": "/tmp/spl/heuristics.out",
+      "rotation": {
+        "maxAgeDays": 1,
+        "maxSizeMB": 10,
+        "maxBackups": 1
+      },
+      "delim": "\n"
+    },
+    {
+      "name": "payloadFile",
+      "path": "/tmp/spl/payload.out",
+      "rotation": {
+        "maxAgeDays": 1,
+        "maxSizeMB": 10,
+        "maxBackups": 1
+      },
+      "delim": "\n"
+    },
+    {
+      "name": "certRepFile",
+      "path": "/tmp/spl/certRep.out",
+      "rotation": {
+        "maxAgeDays": 1,
+        "maxSizeMB": 10,
+        "maxBackups": 1
+      },
+      "delim": "\n"
+    },
+    {
+      "name": "dnsRepFile",
+      "path": "/tmp/spl/dnsRep.out",
+      "rotation": {
+        "maxAgeDays": 1,
+        "maxSizeMB": 10,
+        "maxBackups": 1
+      },
+      "delim": "\n"
+    },
+    {
+      "name": "fileRepFile",
+      "path": "/tmp/spl/fileRep.out",
+      "rotation": {
+        "maxAgeDays": 1,
+        "maxSizeMB": 10,
+        "maxBackups": 1
+      },
+      "delim": "\n"
+    },
+    {
+      "name": "ipRepFile",
+      "path": "/tmp/spl/ipRep.out",
+      "rotation": {
+        "maxAgeDays": 1,
+        "maxSizeMB": 10,
+        "maxBackups": 1
+      },
+      "delim": "\n"
+    },
+    {
+      "name": "urlRepFile",
+      "path": "/tmp/spl/urlRep.out",
+      "rotation": {
+        "maxAgeDays": 1,
+        "maxSizeMB": 10,
+        "maxBackups": 1
+      },
+      "delim": "\n"
+    }
+  ],
+  "subscriptions": [
+    {
+      "adapters": [
+        "eventFile"
+      ],
+      "source": "event"
+    },
+    {
+      "adapters": [
+        "heuristicsFile"
+      ],
+      "source": "heuristics"
+    },
+    {
+      "adapters": [
+        "payloadFile"
+      ],
+      "source": "payload"
+    },
+    {
+      "adapters": [
+        "certRepFile"
+      ],
+      "source": "certRep"
+    },
+    {
+      "adapters": [
+        "dnsRepFile"
+      ],
+      "source": "dnsRep"
+    },
+    {
+      "adapters": [
+        "fileRepFile"
+      ],
+      "source": "fileRep"
+    },
+    {
+      "adapters": [
+        "ipRepFile"
+      ],
+      "source": "ipRep"
+    },
+    {
+      "adapters": [
+        "urlRepFile"
+      ],
+      "source": "urlRep"
+    }
+  ]
+}

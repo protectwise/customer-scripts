@@ -1,0 +1,330 @@
+[
+  {
+    "_id": "Protectwise-Overview-Dashboard",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Protectwise Overview Dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"Destination-Map\",\"panelIndex\":1,\"row\":6,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Threat-Level-Pie-Chart\",\"panelIndex\":2,\"row\":11,\"size_x\":3,\"size_y\":3,\"type\":\"visualization\"},{\"col\":4,\"id\":\"Observation-Type-Pie-Chart\",\"panelIndex\":3,\"row\":11,\"size_x\":3,\"size_y\":3,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Threat-Level-Bar-Chart\",\"panelIndex\":4,\"row\":1,\"size_x\":8,\"size_y\":2,\"type\":\"visualization\"},{\"col\":9,\"id\":\"Total-ProtectWise-Events\",\"panelIndex\":5,\"row\":1,\"size_x\":2,\"size_y\":2,\"type\":\"visualization\"},{\"col\":11,\"id\":\"Total-ProtectWise-Observations\",\"panelIndex\":6,\"row\":1,\"size_x\":2,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"ProtectWise-Top-Events\",\"panelIndex\":7,\"row\":6,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"},{\"col\":7,\"id\":\"ProtectWise-Top-Observations\",\"panelIndex\":8,\"row\":11,\"size_x\":6,\"size_y\":5,\"type\":\"visualization\"},{\"col\":1,\"id\":\"9b886c20-2b95-11e7-b408-df9cd8553ce4\",\"panelIndex\":9,\"row\":3,\"size_x\":12,\"size_y\":2,\"type\":\"visualization\"},{\"col\":6,\"id\":\"ff33fac0-2dfa-11e7-a807-f3e7a555b7ba\",\"panelIndex\":10,\"row\":5,\"size_x\":1,\"size_y\":1,\"type\":\"visualization\"},{\"col\":9,\"id\":\"24b23730-2dfb-11e7-a807-f3e7a555b7ba\",\"panelIndex\":11,\"row\":5,\"size_x\":1,\"size_y\":1,\"type\":\"visualization\"},{\"col\":4,\"id\":\"95212cb0-2dfb-11e7-a807-f3e7a555b7ba\",\"panelIndex\":12,\"row\":5,\"size_x\":1,\"size_y\":1,\"type\":\"visualization\"},{\"col\":8,\"id\":\"42e5d810-2dfb-11e7-a807-f3e7a555b7ba\",\"panelIndex\":13,\"row\":5,\"size_x\":1,\"size_y\":1,\"type\":\"visualization\"},{\"col\":7,\"id\":\"793afe40-2dfb-11e7-a807-f3e7a555b7ba\",\"panelIndex\":14,\"row\":5,\"size_x\":1,\"size_y\":1,\"type\":\"visualization\"},{\"col\":5,\"id\":\"413c5be0-2dfd-11e7-ad16-8f485af52416\",\"panelIndex\":15,\"row\":5,\"size_x\":1,\"size_y\":1,\"type\":\"visualization\"},{\"col\":3,\"id\":\"9cb23530-2dfd-11e7-ad16-8f485af52416\",\"panelIndex\":16,\"row\":5,\"size_x\":1,\"size_y\":1,\"type\":\"visualization\"}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{\"P-1\":{\"mapCenter\":[12.897489183755892,31.640625],\"mapZoom\":2},\"P-16\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}}},\"P-2\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":true}},\"P-3\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":true}},\"P-4\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}},\"vis\":{\"legendOpen\":false}},\"P-7\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":1,\"direction\":\"desc\"}}}},\"P-8\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":2,\"direction\":\"desc\"}}}},\"P-9\":{\"vis\":{\"colors\":{\"Beacon\":\"#0A50A1\",\"Cnc\":\"#EF843C\",\"Data_theft\":\"#BF1B00\",\"Delivery\":\"#447EBC\",\"Fortification\":\"#962D82\"},\"legendOpen\":true}}}",
+      "version": 1,
+      "timeRestore": true,
+      "timeTo": "now",
+      "timeFrom": "now-24h",
+      "refreshInterval": {
+        "display": "Off",
+        "pause": false,
+        "value": 0
+      },
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}],\"highlightAll\":true}"
+      }
+    }
+  },
+  {
+    "_id": "ProtectWise-Messages",
+    "_type": "search",
+    "_source": {
+      "title": "ProtectWise Messages",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "threatLevel",
+        "killChainStage",
+        "eventType",
+        "eventMessage",
+        "associatedId.flowId.ip.srcIp",
+        "associatedId.flowId.ip.dstIp",
+        "killboxUrl"
+      ],
+      "sort": [
+        "timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "ProtectWise-Observations",
+    "_type": "search",
+    "_source": {
+      "title": "ProtectWise Observations",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "threatLevel",
+        "killChainStage",
+        "associatedId.flowId.ip.srcIp",
+        "associatedId.flowId.ip.dstIp",
+        "killboxUrl"
+      ],
+      "sort": [
+        "timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType\",\"analyze_wildcard\":true}},\"highlightAll\":true}"
+      }
+    }
+  },
+  {
+    "_id": "ProtectWise-Events",
+    "_type": "search",
+    "_source": {
+      "title": "ProtectWise Events",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "threatLevel",
+        "killChainStage",
+        "eventType",
+        "eventMessage",
+        "observationCount",
+        "killboxUrl"
+      ],
+      "sort": [
+        "timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND _exists_:eventType\",\"analyze_wildcard\":true}}}"
+      }
+    }
+  },
+  {
+    "_id": "Observation-Type-Pie-Chart",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Observation Type Pie Chart",
+      "visState": "{\"title\":\"ProtectWise Observation Type Pie Chart\",\"type\":\"pie\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"isDonut\":false,\"shareYAxis\":true,\"legendPosition\":\"right\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"threatSubCategory.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Threat-Level-Bar-Chart",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Threat Level Bar Chart",
+      "visState": "{\"title\":\"ProtectWise Threat Level Bar Chart\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{},\"legendPosition\":\"right\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"threatLevel.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"Low\":\"#EAB839\",\"Medium\":\"#EF843C\",\"High\":\"#BF1B00\"},\"legendOpen\":true}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"type:protectwise\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "9b886c20-2b95-11e7-b408-df9cd8553ce4",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Killchain Trend",
+      "visState": "{\"title\":\"ProtectWise Killchain Trend\",\"type\":\"line\",\"params\":{\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":true,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"killChainStage.raw\",\"size\":7,\"order\":\"desc\",\"orderBy\":\"_term\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "ProtectWise-Observations",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Destination-Map",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Destination Map",
+      "visState": "{\"title\":\"ProtectWise Destination Map\",\"type\":\"tile_map\",\"params\":{\"addTooltip\":true,\"heatBlur\":15,\"heatMaxZoom\":16,\"heatMinOpacity\":0.1,\"heatNormalizeData\":true,\"heatRadius\":25,\"isDesaturated\":false,\"mapType\":\"Scaled Circle Markers\",\"wms\":{\"enabled\":false,\"options\":{\"attribution\":\"\",\"format\":\"\",\"layers\":\"\",\"styles\":\"\",\"transparent\":true,\"version\":\"\"},\"url\":\"\"},\"legendPosition\":\"bottomright\",\"mapZoom\":2,\"mapCenter\":[15,5]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"geohash_grid\",\"schema\":\"segment\",\"params\":{\"field\":\"geoip.location\",\"autoPrecision\":true,\"precision\":2}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"type:protectwise\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ProtectWise-Top-Observations",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Top Observations",
+      "visState": "{\"title\":\"ProtectWise Top Observations\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"associatedId.flowId.ip.dstIp.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"threatSubCategory.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"threatScore\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"_term\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":2,\"direction\":\"desc\"}}}}",
+      "description": "",
+      "savedSearchId": "ProtectWise-Observations",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ProtectWise-Top-Events",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Top Events",
+      "visState": "{\"title\":\"ProtectWise Top Events\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":1,\"direction\":\"desc\"},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"eventMessage.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"_term\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"threatScore\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"_term\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":1,\"direction\":\"desc\"}}}}",
+      "description": "",
+      "savedSearchId": "ProtectWise-Events",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Threat-Level-Pie-Chart",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Threat Level Pie Chart",
+      "visState": "{\"title\":\"ProtectWise Threat Level Pie Chart\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false,\"legendPosition\":\"right\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"threatLevel.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"Medium\":\"#EF843C\",\"Low\":\"#EAB839\",\"High\":\"#BF1B00\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"logstash-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "793afe40-2dfb-11e7-a807-f3e7a555b7ba",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Command and Control Count",
+      "visState": "{\"title\":\"ProtectWise Command and Control Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"24\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"CnC\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType AND killChainStage:Cnc\",\"analyze_wildcard\":true}},\"highlightAll\":true}"
+      }
+    }
+  },
+  {
+    "_id": "24b23730-2dfb-11e7-a807-f3e7a555b7ba",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Data Theft Count",
+      "visState": "{\"title\":\"ProtectWise Data Theft Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"24\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Data Theft\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType AND killChainStage:Data_theft\",\"analyze_wildcard\":true}},\"highlightAll\":true}"
+      }
+    }
+  },
+  {
+    "_id": "42e5d810-2dfb-11e7-a807-f3e7a555b7ba",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Fortification Count",
+      "visState": "{\"title\":\"ProtectWise Fortification Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"24\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Fortification\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType AND killChainStage:Fortification\",\"analyze_wildcard\":true}},\"highlightAll\":true}"
+      }
+    }
+  },
+  {
+    "_id": "95212cb0-2dfb-11e7-a807-f3e7a555b7ba",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Delivery Count",
+      "visState": "{\"title\":\"ProtectWise Delivery Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"24\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Delivery\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType AND killChainStage:Delivery\",\"analyze_wildcard\":true}},\"highlightAll\":true}"
+      }
+    }
+  },
+  {
+    "_id": "413c5be0-2dfd-11e7-ad16-8f485af52416",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Exploit Count",
+      "visState": "{\"title\":\"ProtectWise Exploit Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"24\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Exploit\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType AND killChainStage:Exploit\",\"analyze_wildcard\":true}},\"highlightAll\":true}"
+      }
+    }
+  },
+  {
+    "_id": "ff33fac0-2dfa-11e7-a807-f3e7a555b7ba",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Beacon Count",
+      "visState": "{\"title\":\"ProtectWise Beacon Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"24\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Beacon\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType AND killChainStage:Beacon\",\"analyze_wildcard\":true}},\"highlightAll\":true}"
+      }
+    }
+  },
+  {
+    "_id": "Total-ProtectWise-Events",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Event Count",
+      "visState": "{\"title\":\"ProtectWise Event Count\",\"type\":\"metric\",\"params\":{\"fontSize\":\"50\",\"handleNoResults\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Events\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "ProtectWise-Events",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Total-ProtectWise-Observations",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Observation Count",
+      "visState": "{\"title\":\"ProtectWise Observation Count\",\"type\":\"metric\",\"params\":{\"fontSize\":\"50\",\"handleNoResults\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Observations\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "ProtectWise-Observations",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "9cb23530-2dfd-11e7-ad16-8f485af52416",
+    "_type": "visualization",
+    "_source": {
+      "title": "ProtectWise Recon Count",
+      "visState": "{\"title\":\"ProtectWise Recon Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"24\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Recon\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[],\"index\":\"logstash-*\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647},\"query\":{\"query_string\":{\"query\":\"type:protectwise AND NOT _exists_:eventType AND killChainStage:Recon\",\"analyze_wildcard\":true}},\"highlightAll\":true}"
+      }
+    }
+  }
+]

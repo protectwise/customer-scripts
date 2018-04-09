@@ -1,0 +1,1 @@
+end={{endedAt}} devicePayloadId={{id}} cs1={{killChainStage}} cs1Label=KillChain stage rt={{observedAt}} cs2={{observedStage}} cs2Label=observed stage start={{startedAt}} sproc={{sensorNames}} cs4={{visualizerLink}} cs4Label=visualizer link cs5={{messageType}} cs5Label=message type cs6={{obsIds}} cs6Label=correlated observations
