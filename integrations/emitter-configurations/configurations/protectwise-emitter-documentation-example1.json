@@ -1,20 +1,24 @@
 {
     "_version": "1.0",
     "_description": "ProtectWise Emitter Documentation Example 1",
-    "udpAdapters": [{
-        "host": "127.0.0.1",
-        "name": "udp",
-        "port": 8083
-    }],
-    "subscriptions": [{
-        "adapters": [
-                "udp"
-        ],
-        "source": "event",
-        "template": "{{isoStartedAtUTC}} - {{message}}: {{visualizerLink}}",
-        "syslog": {
-            "facility": 4,
-            "severity": 5
+    "udpAdapters": [
+        {
+            "host": "127.0.0.1",
+            "name": "udp",
+            "port": 8083
         }
-    }]
+    ],
+    "subscriptions": [
+        {
+            "adapters": [
+                "udp"
+            ],
+            "source": "event",
+            "template": "{{isoStartedAtUTC}} - {{message}}: {{visualizerLink}}",
+            "syslog": {
+                "facility": 4,
+                "severity": 5
+            }
+        }
+    ]
 }
