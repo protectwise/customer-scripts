@@ -1,5 +1,6 @@
 <powershell>
 # ProtectWise Forwarding Agent Autoconfigurator Powershell Script for AWS
+# Version 1.3
 
 # Learn my subnet information
 $captureInterfaceMac = Invoke-RestMethod http://169.254.169.254/latest/meta-data/network/interfaces/macs/
