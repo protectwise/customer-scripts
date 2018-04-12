@@ -42,7 +42,7 @@
         }
     ],
     "subscriptions": [
-    {
+        {
             "adapters": ["file"],
             "source": "heuristics",
             "syslog": {
