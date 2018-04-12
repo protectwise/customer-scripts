@@ -7,7 +7,7 @@
     "apiUrl": "wss://notifications.protectwise.com",
     "visualizerUrl": "https://visualizer.protectwise.com",
     "logging":{
-       "trace": false
+        "trace": false
     },
     "logRotation": {
         "maxAgeDays": 1,
