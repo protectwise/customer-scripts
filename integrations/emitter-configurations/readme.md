@@ -1,4 +1,4 @@
-ProtectWise Emitter Configurations
+# ProtectWise Emitter Configurations
 
 This folder includes emitter sample configuration files and templates.
 

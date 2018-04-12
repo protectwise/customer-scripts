@@ -1,4 +1,4 @@
-ProtectWise AWS Deployment Scripts
+# ProtectWise AWS Deployment Scripts
 
 This folder includes sample scripts and template files to assist with deployments in AWS VPCs.
 

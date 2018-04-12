@@ -1,4 +1,4 @@
-ProtectWise Elastic Stack Integration
+# ProtectWise Elastic Stack Integration
 
 This folder includes sample configuration files to assist Elastic stack integraion.
 
