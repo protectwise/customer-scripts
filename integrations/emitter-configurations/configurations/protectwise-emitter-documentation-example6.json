@@ -11,9 +11,7 @@
     ],
     "subscriptions": [
         {
-            "adapters": [
-                "cef"
-            ],
+            "adapters": ["cef"],
             "source": "event",
             "messageFormat": {
                 "cef": {

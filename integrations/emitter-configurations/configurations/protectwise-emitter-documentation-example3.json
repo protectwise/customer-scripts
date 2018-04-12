@@ -23,15 +23,11 @@
     ],
     "subscriptions": [
         {
-            "adapters":[
-                "file"
-            ],
+            "adapters": ["file"],
             "source": "event"
         },
         {
-            "adapters" : [
-                "tcp"
-            ],
+            "adapters" : ["tcp"],
             "source": "event",
             "template": "{{isoStartedAtUTC}} - {{message}}: {{visualizerLink}}",
             "syslog": {

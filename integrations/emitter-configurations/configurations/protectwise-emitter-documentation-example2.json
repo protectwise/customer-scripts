@@ -16,9 +16,7 @@
         ],
     "subscriptions": [
         {
-            "adapters": [
-                "file"
-            ],
+            "adapters": ["file"],
             "source": "event"
         }
     ]

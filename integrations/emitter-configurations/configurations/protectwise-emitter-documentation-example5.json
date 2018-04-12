@@ -11,9 +11,7 @@
     ],
     "subscriptions": [
         {
-            "adapters": [
-                "tcp"
-            ],
+            "adapters": ["tcp"],
             "source": "event",
             "syslog": {
                 "facility": 4,
