@@ -13,7 +13,7 @@
     "maxAgeDays":1,
     "maxSizeMB":10,
     "maxBackups":3
-	},
+  },
   "feeds": {
     "observations": {
       "consumeAll": true
@@ -25,7 +25,7 @@
       "path":"/tmp/syslog.out",
       "delim":"\n\n"
     }
-	],
+  ],
   "subscriptions":[
     {
       "adapters":["file"],
@@ -107,5 +107,5 @@
         }
       }
     }
-	]
+  ]
 }
