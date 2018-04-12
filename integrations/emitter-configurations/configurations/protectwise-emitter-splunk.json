@@ -103,51 +103,35 @@
   ],
   "subscriptions": [
     {
-      "adapters": [
-        "eventFile"
-      ],
+      "adapters": ["eventFile"],
       "source": "event"
     },
     {
-      "adapters": [
-        "heuristicsFile"
-      ],
+      "adapters": ["heuristicsFile"],
       "source": "heuristics"
     },
     {
-      "adapters": [
-        "payloadFile"
-      ],
+      "adapters": ["payloadFile"],
       "source": "payload"
     },
     {
-      "adapters": [
-        "certRepFile"
-      ],
+      "adapters": ["certRepFile"],
       "source": "certRep"
     },
     {
-      "adapters": [
-        "dnsRepFile"
-      ],
+      "adapters": ["dnsRepFile"],
       "source": "dnsRep"
     },
     {
-      "adapters": [
-        "fileRepFile"
-      ],
+      "adapters": ["fileRepFile"],
       "source": "fileRep"
     },
     {
-      "adapters": [
-        "ipRepFile"
-      ],
+      "adapters": ["ipRepFile"],
       "source": "ipRep"
     },
     {
-      "adapters": [
-        "urlRepFile"
-      ],
+      "adapters": ["urlRepFile"],
       "source": "urlRep"
     }
   ]
