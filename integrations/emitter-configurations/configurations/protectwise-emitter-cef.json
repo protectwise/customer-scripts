@@ -9,25 +9,24 @@
   "logging":{
     "trace": false
   },
-	"logRotation":{
-		"maxAgeDays":1,
-		"maxSizeMB":10,
-		"maxBackups":3
+  "logRotation":{
+    "maxAgeDays":1,
+    "maxSizeMB":10,
+    "maxBackups":3
 	},
   "feeds": {
     "observations": {
       "consumeAll": true
     }
   },
-	"fileAdapters":[
-	{
-		"name":"file",
-		"path":"/tmp/syslog.out",
-		"delim":"\n\n"
-	}
+  "fileAdapters":[
+    {
+      "name":"file",
+      "path":"/tmp/syslog.out",
+      "delim":"\n\n"
+    }
 	],
-	"subscriptions":
-   [
+  "subscriptions":[
     {
       "adapters":["file"],
       "source":"event",
