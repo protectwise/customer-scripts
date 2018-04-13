@@ -4,7 +4,7 @@
 # exec 1> >(logger -s -t $(basename $0)) 2>&1
 
 # DNS updater script
-# Version 1.3
+# Version 1.4
 # Maps the ProtectWise Sensor DNS name to the proper subnets via AWS CLI and Route53
 # Based on the script by Will Warren at 
 # https://willwarren.com/2014/07/03/roll-dynamic-dns-service-using-amazon-route53/
@@ -41,15 +41,15 @@ for SUBNET in ${SUBNETIDS[@]}; do
 RECORDSET="sensor-$SUBNET.$DOMAIN"
 COMMENT="Auto updating @ $(date)"	
 TMPFILE=$(mktemp /tmp/temporary-file.XXXXXXXX)
-cat > ${TMPFILE} <<EOF
+cat > "$TMPFILE" <<EOF
 { "Comment": "$COMMENT", "Changes": [{ "Action": "UPSERT", "ResourceRecordSet": { "ResourceRecords": [{ "Value": "$IP" }], "Name": "$RECORDSET", "Type": "$TYPE", "TTL": $TTL }}]} 
 EOF
 
-cat $TMPFILE
+cat "$TMPFILE"
 
 echo $(aws route53 change-resource-record-sets \
     --hosted-zone-id $ZONEID \
     --change-batch file://"$TMPFILE")
 
-rm $TMPFILE
+rm "$TMPFILE"
 done
