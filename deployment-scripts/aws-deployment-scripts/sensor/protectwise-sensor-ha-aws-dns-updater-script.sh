@@ -48,7 +48,7 @@ EOF
 cat "$TMPFILE"
 
 echo $(aws route53 change-resource-record-sets \
-    --hosted-zone-id $ZONEID \
+    --hosted-zone-id "$ZONEID" \
     --change-batch file://"$TMPFILE")
 
 rm "$TMPFILE"
