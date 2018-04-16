@@ -7,7 +7,8 @@
 # Version 1.4
 # Maps the ProtectWise Sensor DNS name to the proper subnets via AWS CLI and Route53
 # Based on the script by Will Warren at 
-# https://willwarren.com/2014/07/03/roll-dynamic-dns-service-using-amazon-route53/
+#   https://willwarren.com/2014/07/03/roll-dynamic-dns-service-using-amazon-route53/
+#   https://gist.github.com/phybros/827aa561a44032dd1556
 # This script starts at boot from /etc/rc.local
 # Requires installation of AWS CLI and appropriate IAM access privileges
 
