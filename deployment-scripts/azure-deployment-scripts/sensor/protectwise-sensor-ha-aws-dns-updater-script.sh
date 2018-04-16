@@ -41,8 +41,7 @@ if [[ ${#SUBNETIDS[@]} -eq 0 ]]; then
 fi
 
 IP=$(curl -s -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/privateIpAddress?api-version=2017-08-01&format=text")
-
-		
+	
 for SUBNET in ${SUBNETIDS[@]}; do
     RECORDSET="sensor-$SUBNET"
 
