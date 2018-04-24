@@ -4,13 +4,13 @@
 # exec 1> >(logger -s -t $(basename $0)) 2>&1
 
 # DNS updater script
-# Version 1.4
+# Version 1.5
 # Maps the ProtectWise Sensor DNS name to the proper subnets via AWS CLI and Route53
 # Based on the script by Will Warren at 
 #   https://willwarren.com/2014/07/03/roll-dynamic-dns-service-using-amazon-route53/
 #   https://gist.github.com/phybros/827aa561a44032dd1556
 # This script starts at boot from /etc/rc.local
-# Requires installation of AWS CLI and appropriate IAM access privileges
+# Requires installation of AWS CLI and appropriate IAM access privileges as well as jq (included in the ProtectWise AMI)
 
     # By default the script will create DNS A records for all subnets in the VPC the Sensor
     # boots in.  Otherwise uncomment the following variable and add the specific Subnet IDs this
@@ -32,7 +32,9 @@ if [[ ${#SUBNETIDS[@]} -eq 0 ]]; then
     # SUBNETIDS variable not set, so automatically grab subnets from the VPC
     INTERFACEMAC=($(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/))
     VPCID=$(curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/${INTERFACEMAC[0]}vpc-id)
-    SUBNETIDS=$(aws ec2 describe-subnets --filters "Name=vpc-id,Values=$VPCID" | grep -Po '"'"SubnetId"'"\s*:\s*"\K([^"]*)')
+    # grab the subnet ids the old way with grep in case jq is not installed
+    # SUBNETIDS=$(aws ec2 describe-subnets --filters "Name=vpc-id,Values=$VPCID" | grep -Po '"'"SubnetId"'"\s*:\s*"\K([^"]*)')
+    SUBNETIDS=$(aws ec2 describe-subnets --filters "Name=vpc-id,Values=$VPCID" | jq -r '.Subnets[].SubnetId')
 fi
 
 TYPE="A"
